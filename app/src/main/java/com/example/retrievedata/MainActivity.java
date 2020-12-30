@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     //the URL having the json data
-    private static final String JSON_URL = "http://192.168.0.7/manvaasam/retrieve.php";
+    private static final String JSON_URL = "http://192.168.0.5/manvaasam/retrieve.php";
 
     //listview object
     ListView listView;
@@ -43,10 +44,15 @@ public class MainActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         packagesList = new ArrayList<>();
 
+
+
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this,packagesList.get(i).toString(),Toast.LENGTH_LONG).show();
+                packages packages = packagesList.get(i);
+                Toast.makeText(MainActivity.this, packages.getMid(),Toast.LENGTH_LONG).show();
             }
         });
 
